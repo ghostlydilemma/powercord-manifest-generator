@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Powercord Manifest Gen</title>
+        <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+
+    <body class="dark">
+        <div class="themeSwitcher">
+            <div class="typeSelect" id="theme">
+                <div class="selectItem selected" data-type="dark">
+                    Dark Theme
+                </div>
+                <div class="selectItem" data-type="light">
+                    Light Theme
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <h1>Powercord Manifest Generator</h1>
+            <h2>A small tool for generating and downloading Powercord Manifest Files</h2>
+        </div>
+        <main class="generators">
+            <div class="typeSelect" id="generator">
+                <div class="selectItem selected" data-type="plugins">
+                    Plugins
+                </div>
+                <div class="selectItem" data-type="themes">
+                    Themes
+                </div>
+            </div>
+            <div class="generator selected" data-type="plugins" data-fileName="manifest.json">
+                <h3>Plugins Manifest</h3>
+                <h4>Generator for plugin manifest.json</h4>
+
+                <form action="">
+                    <h2>Required</h2>
+                    <div class="input">
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="name">Name: <span class="required"></span><br>
+                                <span class="description">Display name used in the UI.</span>
+                            </label><br /><br />
+                            <input type="text" name="name" id="pc-plugin-name" placeholder="">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="version">Version: <span class="required"></span><br><span
+                                    class="description">Version of the plugin.</span><br><span class="hint">0.x.x
+                                    will
+                                    mean beta and will be flagged as so in the plugins section.</span></label><br />
+                            <input type="text" name="version" id="pc-plugin-version" placeholder="">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="author">Author: <span class="required"></span><br><span
+                                    class="description">Name(s)
+                                    of the
+                                    author(s).</span><br></label><br />
+                            <input type="text" name="author" id="pc-plugin-author" placeholder="">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="license">License: <span class="required"></span><br><span
+                                    class="description">License the plugin is released
+                                    under.</span><br></label><br />
+                            <input type="text" name="license" id="pc-plugin-license" placeholder="">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="description">Description: <span class="required"></span><br><span
+                                    class="description">Short description
+                                    of what the plugin is
+                                    doing.</span></label><br />
+                            <textarea name="description" id="pc-plugin-description" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <h2>Optional</h2>
+                    <div class="input">
+                        <div class="entry" data-required=false data-filled=false>
+                            <label for="permissions">Permissions: <br><span class="description">Comma-seperated list
+                                    of
+                                    permission the plugin needs (<code>keypresses</code>, <code>use_eud</code>,
+                                    <code>ext_api</code>).</span><br></label><br />
+                            <input type="text" name="permissions" id="pc-plugin-permissions">
+                        </div>
+                        <div class="entry" data-required=false data-filled=false>
+                            <label for="dependencies">Dependencies: <br><span class="description">Comma-seperated
+                                    list
+                                    of plugin's dependencies.</span><br><br></label><br />
+                            <input type="text" name="dependencies" id="pc-plugin-dependencies">
+                        </div>
+                        <div class="entry" data-required=false data-filled=false>
+                            <label for="optionalDependencies">Optional Dependencies: <br><span
+                                    class="description">Comma-seperated list
+                                    of plugin's dependencies.</span><br><br></label><br />
+                            <input type="text" name="optionalDependencies" id="pc-plugin-optionalDependencies">
+                        </div>
+                        <div class="entry" data-required=false data-filled=false>
+                            <label for="appMode">App Mode: <br><span class="description">Where the plugin should be
+                                    injected. Can be <code>app</code>, <code>overlay</code>, or <code>both</code>
+                                    (default to <code>app</code>).</span><br><br></label><br />
+                            <select name="appMode" id="pc-plugin-appMode">
+                                <option value="app">App</option>
+                                <option value="overlay">Overlay</option>
+                                <option value="both">Both</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="generator" data-type="themes" data-fileName="powercord_manifest.json">
+                <h3>Themes Manifest</h3>
+                <h4>Generator for theme powercord_manifest.json</h4>
+
+                <form action="">
+                    <h2>Required</h2>
+                    <div class="input">
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="name">Name: <span class="required"></span><br>
+                                <span class="description">Display name used in the UI.</span>
+                            </label><br /><br />
+                            <input type="text" name="name" id="pc-themes-name" placeholder="">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="version">Version: <span class="required"></span><br><span
+                                    class="description">Version of
+                                    the theme.</span><br><span class="hint">0.x.x will
+                                    mean beta and will be flagged as so in the themes section.</span></label><br />
+                            <input type="text" name="version" id="pc-themes-version" placeholder="">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="author">Author: <span class="required"></span><br><span
+                                    class="description">Name(s) of
+                                    the
+                                    author(s).</span><br></label><br />
+                            <input type="text" name="author" id="pc-themes-author" placeholder="">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="license">License: <span class="required"></span><br><span
+                                    class="description">License
+                                    the theme is
+                                    released
+                                    under.</span><br></label><br />
+                            <input type="text" name="license" id="pc-themes-license" placeholder="">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="theme">Theme: <span class="required"></span><br><span
+                                    class="description">License the
+                                    theme is
+                                    released
+                                    under.</span><br><br></label><br />
+                            <input type="text" name="theme" id="pc-themes-theme" placeholder="">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="description">Description: <span class="required"></span><br><span
+                                    class="description">Short description
+                                    of what the theme is
+                                    doing.</span></label><br />
+                            <textarea name="description" id="pc-themes-description" placeholder=""></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </div>
+
+
+            <!--
+
+
+                  "name": "[Theme Name]",
+    "description": "[Some description for the theme you are trying to load]",
+    "version": "[A version number, something like: 1.0.0 is good enough]",
+    "author": "[Theme Developer Name]",
+    "license": "[Under which license the theme is published, use something like: GPL-3.0-only, or whatever else you want]",
+    "theme": "[Link to the theme file; if the file you downloaded is called style.css you would have to write ./style.css (or ./style.scss) here]"
+
+
+
+            -->
+        </main>
+        <a class="download disabled">Download</a>
+        <script defer>new Generator();</script>
+    </body>
+
+</html>
