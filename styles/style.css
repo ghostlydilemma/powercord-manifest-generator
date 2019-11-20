@@ -280,11 +280,32 @@ a.download h2{
         max-height: 100%;
     }
 
+    .generator.selected{
+        padding-bottom: 70px;
+    }
+
     body{
-        margin: 8px 0;
+        margin: 8px 0 0 0;
     }
 
     html{
-        overflow: visible;
+        overflow-y: visible;
+    }
+
+    a.download{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    a.download:hover{
+        bottom: 0;
+        box-shadow: none;
+    }
+
+    .themeSwitcher{
+        bottom: 60px;
     }
 }
