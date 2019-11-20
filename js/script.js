@@ -22,12 +22,24 @@ class Generator {
                 if (!el.classList.contains('selected')) {
                     this.switchGenerator(el)
                 }
+            });
+
+            el.addEventListener('touch', () => {
+                if (!el.classList.contains('selected')) {
+                    this.switchGenerator(el)
+                }
             })
         })
 
         document.querySelectorAll('.typeSelect#theme .selectItem').forEach(el => {
 
             el.addEventListener('click', () => {
+                if (!el.classList.contains('selected')) {
+                    this.switchTheme(el)
+                }
+            })
+
+            el.addEventListener('touch', () => {
                 if (!el.classList.contains('selected')) {
                     this.switchTheme(el)
                 }
