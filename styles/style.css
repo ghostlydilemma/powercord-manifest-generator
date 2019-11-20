@@ -66,6 +66,11 @@ main{
 }
 
 .typeSelect .selectItem{
+    background: transparent;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    outline: none;
+    border: none;
     margin: 0 6px;
     cursor: pointer;
     color: var(--text-muted);
@@ -132,7 +137,7 @@ main{
     opacity: 1;
 }
 
-input, textarea, select{
+input[type="text"], textarea, select{
     background: var(--input-bg)!important;
     border: 1px solid var(--input-border);
     color: var(--text-normal);
@@ -160,7 +165,7 @@ select option{
     color: var(--text-normal);
 }
 
-input:valid:not(:placeholder-shown), textarea:valid:not(:placeholder-shown), select{
+input[type="text"]:valid:not(:placeholder-shown), textarea:valid:not(:placeholder-shown), select{
     border-color: #43b581;
     color: #43b581;
 }
@@ -170,12 +175,12 @@ textarea{
     height: 155px;
 }
 
-input:focus, textarea:focus{
+input[type="text"]:focus, textarea:focus{
     border-color: var(--background-blurple)!important;
     color: var(--text-normal)!important;
 }
 
-input:hover, textarea:hover{
+input[type="text"]:hover, textarea:hover{
     border-color: var(--input-hover-border);
 }
 
@@ -231,6 +236,8 @@ a.download{
     font-size: 1.5em;
     border-radius: 5px;
     text-decoration: none;
+    pointer-events: all;
+    opacity: 1;
 }
 
 a.download:hover{
@@ -240,6 +247,8 @@ a.download:hover{
 
 a.download.disabled{
     bottom: -100px;
+    opacity: 0;
+    pointer-events: none;
 }
 
 a.download:active{
@@ -268,10 +277,14 @@ a.download h2{
     }
 
     .generator{
-        max-height: 68vh;
+        max-height: 100%;
     }
 
     body{
         margin: 8px 0;
+    }
+
+    html{
+        overflow: visible;
     }
 }
