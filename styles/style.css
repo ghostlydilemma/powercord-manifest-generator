@@ -1,3 +1,7 @@
+html{
+    overflow: hidden;
+}
+
 body{
     font-family: 'Lato', sans-serif;
     display: flex;
@@ -46,6 +50,7 @@ main{
     background-color: var(--background-secondary);
     border-radius: 5px;
     overflow: hidden;
+    transition: width 200ms;
 }
 
 .typeSelect{
@@ -106,17 +111,19 @@ main{
 
 .themeSwitcher{
     position: fixed;
-    bottom: 10px;
-    right: -200px;
+    opacity: 0.5;
+    right: -120px;
+    bottom: 20px;
     background-color: var(--background-tertiary);
     padding: 1%;
     border-radius: 5px;
-    transition: right 200ms;
+    transition: all 200ms;
     z-index: 100;
 }
 
 .themeSwitcher:hover{
-    right: 10px;
+    right: 0px;
+    opacity: 1;
 }
 
 input:empty, textarea:empty, select{
@@ -218,4 +225,14 @@ a.download:active{
 
 a.download h2{
     margin: 0;
+}
+
+@media (max-width: 1000px){
+    .generator .input{
+        grid-template-columns: repeat(1, 100%);
+    }
+
+    main{
+        width: 90%;
+    }
 }
