@@ -17,12 +17,8 @@
     <body class="dark">
         <div class="themeSwitcher">
             <div class="typeSelect" id="theme">
-                <button class="selectItem selected" data-type="dark">
-                    Dark Theme
-                </button>
-                <button class="selectItem" data-type="light">
-                    Light Theme
-                </button>
+                <input type="button" value="Dark Theme" class="selectItem selected" data-type="dark" />
+                <input type="button" value="Light Theme" class="selectItem" data-type="light" />
             </div>
         </div>
         <div class="header">
@@ -31,12 +27,8 @@
         </div>
         <main class="generators">
             <div class="typeSelect" id="generator">
-                <button class="selectItem selected" data-type="plugins">
-                    Plugins
-                </button>
-                <button class="selectItem" data-type="themes">
-                    Themes
-                </button>
+                <input type="button" value="Plugins" class="selectItem selected" data-type="plugins" />
+                <input type="button" value="Themes" class="selectItem" data-type="themes" />
             </div>
             <div class="generator selected" data-type="plugins" data-fileName="manifest.json">
                 <h3>Plugins Manifest</h3>

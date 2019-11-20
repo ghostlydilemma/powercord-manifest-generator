@@ -146,7 +146,7 @@ class Generator {
     }
 
     clearInputs() {
-        document.querySelectorAll('input, textarea').forEach(el => {
+        document.querySelectorAll('input[type="text"], textarea').forEach(el => {
             el.value = ''
         })
     }
