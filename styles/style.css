@@ -161,8 +161,8 @@ select option{
 }
 
 input:valid:not(:placeholder-shown), textarea:valid:not(:placeholder-shown), select{
-    border-color: #43b581!important;
-    color: #43b581!important;
+    border-color: #43b581;
+    color: #43b581;
 }
 
 textarea{
