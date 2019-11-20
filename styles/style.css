@@ -21,6 +21,9 @@ body.light{
     --text-normal: #2e3338;
     --text-muted: #4f5660;
     --border-select: #737f8d;
+    --input-bg: rgba(79,84,92,0.02);
+    --input-border: rgba(79,84,92,0.3);
+    --input-hover-border: #b9bbbe;
 }
 
 body.dark{
@@ -33,6 +36,9 @@ body.dark{
     --text-normal: #dcddde;
     --text-muted: #72767d;
     --border-select: #fff;
+    --input-bg: rgba(0,0,0,0.1);
+    --input-border: rgba(0,0,0,0.3);
+    --input-hover-border: #040405;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -126,18 +132,27 @@ main{
     opacity: 1;
 }
 
-input:empty, textarea:empty, select{
-    background-color: transparent;
-    border: none;
+input, textarea, select{
+    background: var(--input-bg)!important;
+    border: 1px solid var(--input-border);
     color: var(--text-normal);
-    border-bottom: 2px solid red;
+    border-radius: 3px;
     width: 100%;
+    transition: 100ms border-color;
     margin-top: 15px;
     font-size: 20px;
     font-family: 'Lato', sans-serif;
     margin-bottom: 10px;
     /* height: 24px; */
-    padding: 1px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
 }
 
 select option{
@@ -146,7 +161,8 @@ select option{
 }
 
 input:valid:not(:placeholder-shown), textarea:valid:not(:placeholder-shown), select{
-    border-color: green;
+    border-color: #43b581!important;
+    color: #43b581!important;
 }
 
 textarea{
@@ -154,12 +170,20 @@ textarea{
     height: 155px;
 }
 
-input:hover, input:active, textarea:hover, textarea:active{
-    border-color: orange!important;
+input:focus, textarea:focus{
+    border-color: var(--background-blurple)!important;
+    color: var(--text-normal)!important;
+}
+
+input:hover, textarea:hover{
+    border-color: var(--input-hover-border);
 }
 
 .entry{
     margin: 10px 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 code{
@@ -235,4 +259,8 @@ a.download h2{
     main{
         width: 90%;
     }
+/* 
+    input, textarea{
+        width: 97%!important;
+    } */
 }

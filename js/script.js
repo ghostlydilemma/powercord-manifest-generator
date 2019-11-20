@@ -11,7 +11,8 @@ class Generator {
 
     constructor() {
         this.genData = {}
-        this.prepareQuerySel()
+        this.prepareQuerySel();
+        this.clearInputs();
     }
 
     prepareQuerySel() {
@@ -47,7 +48,7 @@ class Generator {
         })
 
         document.querySelector('a.download').addEventListener('click', () => {
-            this.clearInputs();
+            this.clearInputs()
         })
     }
 
@@ -69,7 +70,7 @@ class Generator {
         }
         document.querySelector('a.download').classList.add('disabled')
         this.genData = {}
-        this.clearInputs();
+        this.clearInputs()
     }
 
     switchTheme(element) {
@@ -101,20 +102,20 @@ class Generator {
 
         if (element.value !== '') {
             this.genData[inputType] = element.value
-            element.closest('.entry').setAttribute('data-filled', "true");
+            element.closest('.entry').setAttribute('data-filled', "true")
         }
         else {
             delete this.genData[inputType]
-            element.closest('.entry').setAttribute('data-filled', "false");
+            element.closest('.entry').setAttribute('data-filled', "false")
         }
 
-        this.checkIfDataRequired();
+        this.checkIfDataRequired()
 
     }
 
     checkIfDataRequired() {
 
-        let requiredFilled = true;
+        let requiredFilled = true
 
         document.querySelectorAll('.selected .entry[data-required=true]').forEach(el => {
 
@@ -127,7 +128,7 @@ class Generator {
         })
 
         if (requiredFilled) {
-            this.generateDownloadFile();
+            this.generateDownloadFile()
             document.querySelector('a.download').classList.remove('disabled')
         } else {
             document.querySelector('a.download').classList.add('disabled')
@@ -137,18 +138,16 @@ class Generator {
 
     generateDownloadFile() {
 
-        console.log(this.genData)
-
         const blob = new Blob([JSON.stringify(this.genData)], { type: 'application/json' });
         const dlLink = document.querySelector('a.download')
-        dlLink.href = URL.createObjectURL(blob);
+        dlLink.href = URL.createObjectURL(blob)
         dlLink.download = document.querySelector('.generator.selected').getAttribute('data-fileName')
 
     }
 
     clearInputs() {
         document.querySelectorAll('input, textarea').forEach(el => {
-            el.value = '';
+            el.value = ''
         })
     }
 }
