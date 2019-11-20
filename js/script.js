@@ -24,7 +24,7 @@ class Generator {
                 }
             });
 
-            el.addEventListener('touch', () => {
+            el.addEventListener('touchstart', () => {
                 if (!el.classList.contains('selected')) {
                     this.switchGenerator(el)
                 }
@@ -39,7 +39,7 @@ class Generator {
                 }
             })
 
-            el.addEventListener('touch', () => {
+            el.addEventListener('touchstart', () => {
                 if (!el.classList.contains('selected')) {
                     this.switchTheme(el)
                 }
