@@ -1,7 +1,5 @@
 class Generator {
 
-    _genData
-
     get genData() {
         return this._genData
     }
