@@ -50,14 +50,7 @@
                                     mean beta and will be flagged as so in the plugins section.</span></label><br>
                             <input type="text" name="version" id="pc-plugin-version" placeholder=" ">
                         </div>
-                        <div class="entry" data-required=true data-filled=false>
-                            <label for="author">Author: <span class="required"></span><br><span
-                                    class="description">Name(s)
-                                    of the
-                                    author(s).</span><br></label><br>
-                            <input type="text" name="author" id="pc-plugin-author" placeholder=" ">
-                        </div>
-                        <div class="entry" data-required=true data-filled=false>
+                        <div class="entry" data-required=true data-filled=false style="justify-content: flex-start">
                             <label for="license">License: <span class="required"></span><br><span
                                     class="description">License the plugin is released
                                     under.</span><br></label><br>
@@ -69,6 +62,38 @@
                                     of what the plugin is
                                     doing.</span></label><br>
                             <textarea name="description" id="pc-plugin-description" placeholder=" "></textarea>
+                        </div>
+                    </div>
+                    <h3>Required: Author
+                        <br>
+                        <span class="description">Only the presence of one of "github" or "discord" is required. If
+                            preferred is missing, it'll try using discord first.</span>
+                    </h3>
+                    <div class="input small multiple"
+                        data-from='["pc-plugin-author-discord", "pc-plugin-author-github"]' data-entered="0"
+                        data-needed="2" data-needed-function="author-function">
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="author-github">Github Username: <span class="required"></span><br><span
+                                    class="description">Username of the main author of the
+                                    plugin.</span><br></label><br>
+                            <input type="text" name="author-github" id="pc-plugin-author-github" placeholder=" ">
+                        </div>
+                        <div class="entry" data-required=true data-filled=false>
+                            <label for="author-discord">Discord ID: <span class="required"></span><br><span
+                                    class="description">Discord Account ID of the
+                                    main author of the
+                                    plugin.</span><br></label><br>
+                            <input type="text" name="author-discord" id="pc-plugin-author-discord" placeholder=" ">
+                        </div>
+                        <div class="entry hidden" id="pc-plugin-author-preferred-entry" data-required=false
+                            data-filled=false>
+                            <label for="author-preferred">Preferred Input: <br><span class="description">Preferred Way
+                                    of contacting the author if both Github and
+                                    Discord are given</span><br></label><br>
+                            <select name="author-preferred" id="pc-plugin-author-preferred">
+                                <option value="discord">Discord</option>
+                                <option value="github">Github</option>
+                            </select>
                         </div>
                     </div>
                     <h2>Optional</h2>
@@ -92,15 +117,45 @@
                                     of plugin's dependencies.</span><br><br></label><br>
                             <input type="text" name="optionalDependencies" id="pc-plugin-optionalDependencies">
                         </div>
-                        <div class="entry" data-required=false data-filled=false>
-                            <label for="appMode">App Mode: <br><span class="description">Where the plugin should be
-                                    injected. Can be <code>app</code>, <code>overlay</code>, or <code>both</code>
-                                    (default to <code>app</code>).</span><br></label><br>
-                            <select name="appMode" id="pc-plugin-appMode">
+                        <div class="entry" data-required=false data-filled=false data-export="array">
+                            <label for="appMode">App Mode: <br><span class="description">
+                                    Comma-seperated list of strings defining where the plugin should be injected.
+                                    Possible Values: <code>app</code>, <code>overlay</code>, <code>popout</code> and
+                                    <code>splash</code>. Defaults to <code>app</code></span><br></label><br>
+                            <input type="text" name="appMode" id="pc-plugin-appMode" list="pc-plugin-appModeDatalist">
+                            <datalist id="pc-plugin-appModeDatalist">
                                 <option value="app">App</option>
                                 <option value="overlay">Overlay</option>
-                                <option value="both">Both</option>
+                                <option value="popout">Popout</option>
+                                <option value="popout">Splash</option>
+                            </datalist>
+                        </div>
+                        <div class="entry" data-required=false data-filled=false data-export="array">
+                            <label for="consent">Consent: <br><span class="description">Comma-seperated list of consents
+                                    the plugin
+                                    author gives Powercord for managing their plugin.
+                                    Possible values: <code>ext_listing</code>.</span><br><br></label><br>
+                            <input type="text" name="consent" id="pc-plugin-consent" list="pc-plugin-consentDatalist">
+                            <datalist id="pc-plugin-consentDatalist">
+                                <option value="ext_listing">External Listing</option>
+                            </datalist>
+                        </div>
+                        <div class="entry" data-required=false data-filled=false>
+                            <label for="nsfw">NSFW: <br><span class="description">Is your main feature
+                                    based on NSFW actions?</span><br></label><br>
+                            <select name="nsfw" id="pc-plugin-nsfw">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
                             </select>
+                        </div>
+                        <div class="entry" data-required=false data-filled=false data-export="array">
+                            <label for="tags">Tags: <br><span class="description">Comma-seperated list of tags a plugin
+                                    falls
+                                    under.</span><br><br></label><br>
+                            <input type="text" name="tags" id="pc-plugin-tags" list="pc-plugin-tagsDatalist">
+                            <datalist id="pc-plugin-tagsDatalist">
+                                <option value="tag">Tags</option>
+                            </datalist>
                         </div>
                     </div>
                 </form>

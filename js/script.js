@@ -44,15 +44,15 @@ class Generator {
             })
         })
 
-        document.querySelectorAll('.generator .entry input, .generator .entry textarea').forEach(el => {
-            el.addEventListener('keyup', () => {
-                this.updateGenData(el)
-            })
-        })
+        document.querySelectorAll('.generator .entry input, .generator .entry textarea, .generator .entry select').forEach(el => {
 
-        document.querySelectorAll('.generator .entry select').forEach(el => {
+            let eventListener = 'keyup'
 
-            el.addEventListener('change', () => {
+            if (el.localName === 'select') {
+                eventListener = 'change'
+            }
+
+            el.addEventListener(eventListener, () => {
                 this.updateGenData(el)
             })
         })
@@ -108,15 +108,33 @@ class Generator {
     */
     updateGenData(element) {
 
-        let inputType = element.id.slice(10, element.id.length)
+        let subObjects = (element.id.slice(10, element.id.length)).split('-');
 
         if (element.value !== '') {
-            this.genData[inputType] = element.value
+
+            let value = element.value
+            if (element.closest('.entry').getAttribute('data-export') === 'array') {
+                value = element.value.split(',')
+            }
+
+            if (subObjects.length > 1) {
+                if (this.genData[subObjects[0]] === undefined) this.genData[subObjects[0]] = {}
+                this.genData[subObjects[0]][subObjects[1]] = value
+            } else this.genData[subObjects[0]] = value
+
             element.closest('.entry').setAttribute('data-filled', "true")
-        }
-        else {
-            delete this.genData[inputType]
+            let multiple = element.closest('.input.multiple')
+            if (multiple) this.updateMultiple(multiple, 'filled', element)
+        } else {
+
+            if (subObjects.length > 1) {
+                delete this.genData[subObjects[0]][subObjects[1]]
+                if (Object.keys(this.genData[subObjects[0]]).length === 0 && this.genData[subObjects[0]].constructor === Object) delete this.genData[subObjects[0]]
+            } else delete this.genData[subObjects[0]]
+
             element.closest('.entry').setAttribute('data-filled', "false")
+            let multiple = element.closest('.input.multiple')
+            if (multiple) this.updateMultiple(multiple, 'empty', element)
         }
 
         this.checkIfDataRequired()
@@ -146,6 +164,38 @@ class Generator {
 
     }
 
+    /**
+     * 
+     * @param {HTMLDivElement} multiple 
+     * @param {HTMLElement} elementChanged
+     */
+    updateMultiple(multiple, state, elementChanged) {
+
+        /**
+         * @type {HTMLInputElement[]}
+         */
+        let inputsToCheck = JSON.parse(multiple.getAttribute('data-from'))
+
+        let allFilled = true;
+        if (state === 'filled') {
+
+            inputsToCheck.forEach(el => {
+                el = document.querySelector(`#${el}`);
+                el.closest('.entry').setAttribute('data-filled', true)
+                if (el.value === "") allFilled = false;
+            })
+            if (allFilled) this.functions()[multiple.getAttribute('data-needed-function')]['on']()
+        } else {
+            multiple.setAttribute('data-entered', parseInt(multiple.getAttribute('data-entered')) - 1)
+            this.functions()[multiple.getAttribute('data-needed-function')]['off']();
+            inputsToCheck.forEach(el => {
+                el = document.querySelector(`#${el}`)
+                if (elementChanged !== el && el.value === '') el.closest('.entry').setAttribute('data-filled', false)
+            })
+        }
+
+    }
+
     generateDownloadFile() {
 
         const blob = new Blob([JSON.stringify(this.genData)], { type: 'application/json' });
@@ -159,5 +209,18 @@ class Generator {
         document.querySelectorAll('input[type="text"], textarea').forEach(el => {
             el.value = ''
         })
+        let functions = this.functions();
+        for (let f in functions) {
+            functions[f]['off']();
+        }
+    }
+
+    functions() {
+        return {
+            "author-function": {
+                "on": () => { document.getElementById('pc-plugin-author-preferred-entry').classList.remove('hidden') },
+                "off": () => { document.getElementById('pc-plugin-author-preferred-entry').classList.add('hidden') }
+            }
+        }
     }
 }
