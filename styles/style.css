@@ -1,3 +1,6 @@
+:focus { outline:none; }
+::-moz-focus-inner { border:0; }
+
 html{
     overflow: hidden;
 }
@@ -16,7 +19,7 @@ body.light{
     --background-secondary: #f2f3f5;
     --background-tertiary: #e3e5e8;
     --background-accent: #747f8d;
-    --background-floating: #ffffff;
+    --background-floating: #d6d8db;
     --background-blurple: #7289DA;
     --text-normal: #2e3338;
     --text-muted: #4f5660;
@@ -110,11 +113,14 @@ main{
 }
 
 .generator form h2, .generator form h3{
-    background-color: var(--background-floating);
-    padding: 10px;
     position: sticky;
     top: -30px;
-    z-index: 500;
+    z-index: 300;
+}
+
+.generator form h2, .generator form h3, .generator form h4{
+    background-color: var(--background-floating);
+    padding: 10px;
 }
 
 .generator .input{
@@ -126,6 +132,7 @@ main{
 .generator .input.small{
     background-color: var(--background-tertiary);
     margin-top: 0;
+    margin-bottom: 15px;
 }
 
 .themeSwitcher{
@@ -173,6 +180,30 @@ select option{
     color: var(--text-normal);
 }
 
+button.btn{
+    cursor: pointer;
+    background-color: var(--background-blurple);
+    color: #ffffff;
+    border: none;
+    outline: none!important;
+    border-radius: 3px;
+    line-height: 16px;
+    padding: 2px 16px;
+    min-height: 32px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    user-select: none;
+    transition: filter 200ms;
+}
+
+button.btn:hover{
+    filter: brightness(0.9);
+}
+
+button.btn:active{
+    filter: brightness(0.8);
+}
+
 input[type="text"]:valid:not(:placeholder-shown), textarea:valid:not(:placeholder-shown), select, .entry[data-filled=true] input{
     border-color: #43b581!important;
     color: #43b581;
@@ -199,7 +230,7 @@ input[type="text"]:hover, textarea:hover{
     justify-content: space-between;
 }
 
-.entry.hidden{
+.hidden{
     display: none;
 }
 
@@ -253,6 +284,7 @@ a.download{
     text-decoration: none;
     pointer-events: all;
     opacity: 1;
+    z-index: 999;
 }
 
 a.download:hover{
@@ -273,6 +305,14 @@ a.download:active{
 
 a.download h2{
     margin: 0;
+}
+
+#contributors {
+    margin-bottom: 15px;
+}
+
+#contributors .input{
+    margin-bottom: 0;
 }
 
 @media (max-width: 1000px){

@@ -98,20 +98,20 @@
                     </div>
                     <h2>Optional</h2>
                     <div class="input">
-                        <div class="entry" data-required=false data-filled=false>
+                        <div class="entry" data-required=false data-filled=false data-export="array">
                             <label for="permissions">Permissions: <br><span class="description">Comma-seperated list
                                     of
                                     permission the plugin needs (<code>keypresses</code>, <code>use_eud</code>,
                                     <code>ext_api</code>).</span><br></label><br>
                             <input type="text" name="permissions" id="pc-plugin-permissions">
                         </div>
-                        <div class="entry" data-required=false data-filled=false>
+                        <div class="entry" data-required=false data-filled=false data-export="array">
                             <label for="dependencies">Dependencies: <br><span class="description">Comma-seperated
                                     list
                                     of plugin's dependencies.</span><br><br></label><br>
                             <input type="text" name="dependencies" id="pc-plugin-dependencies">
                         </div>
-                        <div class="entry" data-required=false data-filled=false>
+                        <div class="entry" data-required=false data-filled=false data-export="array">
                             <label for="optionalDependencies">Optional Dependencies: <br><span
                                     class="description">Comma-seperated list
                                     of plugin's dependencies.</span><br><br></label><br>
@@ -157,6 +157,17 @@
                                 <option value="tag">Tags</option>
                             </datalist>
                         </div>
+                    </div>
+                    <h3>Contributors
+                        <br>
+                        <span class="description">Only the presence of one of "github" or "discord" is required. If
+                            preferred is missing, it'll try using discord first.</span>
+                    </h3>
+                    <div id="contributors" data-added="0"></div>
+                    <div class="flex">
+                        <button class="btn" id="addContribButton" type="button">Add a Contributor</button>
+                        <button class="btn hidden" id="removeContribButton" type="button">Remove the last
+                            Contributor</button>
                     </div>
                 </form>
             </div>
@@ -211,6 +222,12 @@
                                     of what the theme is
                                     doing.</span></label><br>
                             <textarea name="description" id="pc-themes-description" placeholder=" "></textarea>
+                        </div>
+                        <div class="entry" data-required=false data-filled=false data-export="array">
+                            <label for="preview">Preview:<br><span class="preview">Preview Images for the theme which
+                                    will be
+                                    displayed.</span></label><br>
+                            <textarea name="preview" id="pc-themes-preview" placeholder=" "></textarea>
                         </div>
                     </div>
                 </form>
