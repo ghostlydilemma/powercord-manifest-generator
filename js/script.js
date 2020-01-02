@@ -148,7 +148,7 @@ class Generator {
 
     generateDownloadFile() {
 
-        const blob = new Blob([JSON.stringify(this.genData)], { type: 'application/json' });
+        const blob = new Blob([JSON.stringify(this.genData, null, 4)], { type: 'application/json' });
         const dlLink = document.querySelector('a.download')
         dlLink.href = URL.createObjectURL(blob)
         dlLink.download = document.querySelector('.generator.selected').getAttribute('data-fileName')
