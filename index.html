@@ -7,10 +7,12 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Powercord Manifest Gen</title>
         <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/atom-one-dark.min.css">
         <link rel="stylesheet" href="styles/style.css">
         <meta name="color-scheme" content="dark light">
         <meta name="theme-color" content="#7289DA" />
         <meta name="description" content="Generator to easily get Theme and Plugin Manifest files for Powercord" />
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
         <script src="js/script.js"></script>
     </head>
 
@@ -30,7 +32,7 @@
                 <input type="button" value="Plugins" class="selectItem selected" data-type="plugins" />
                 <input type="button" value="Themes" class="selectItem" data-type="themes" />
             </div>
-            <div class="generator selected" data-type="plugins" data-fileName="manifest.json">
+            <div class="generator selected" data-type="plugins" data-fileName="plguin_manifest.json">
                 <h3>Plugins Manifest</h3>
                 <h4>Generator for plugin manifest.json</h4>
 
@@ -105,7 +107,7 @@
                     </div>
                 </form>
             </div>
-            <div class="generator" data-type="themes" data-fileName="powercord_manifest.json">
+            <div class="generator" data-type="themes" data-fileName="theme_manifest.json">
                 <h3>Themes Manifest</h3>
                 <h4>Generator for theme powercord_manifest.json</h4>
 
@@ -160,7 +162,17 @@
             </div>
             </div>
         </main>
-        <a class="download disabled">Download</a>
+
+        <div class="preview disabled">
+            <a class="shortText">Preview</a>
+
+            <div class="json hidden">
+                <pre><code></code></pre>
+            </div>
+
+            <a class="download hidden">Download</a>
+        </div>
+
         <script defer>new Generator();</script>
     </body>
 

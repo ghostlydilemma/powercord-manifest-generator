@@ -191,7 +191,7 @@ input[type="text"]:hover, textarea:hover{
     justify-content: space-between;
 }
 
-code{
+code {
     font-family: 'Fira Mono', monospace;
     background-color: rgba(0, 0, 0, 0.2);
 }
@@ -222,16 +222,17 @@ span.required::before{
     background-color: var(--background-tertiary);  
 }
 
-a.download{
+div.preview{
     cursor: pointer;
     background: var(--background-blurple);
     color: white;
     text-align: center;
     position: absolute;
     bottom: 5px;
-    padding: 10px;
+    height: 29px;
+    padding: 15px;
     box-shadow: none;
-    transition: all 200ms;
+    transition: all 300ms;
     width: 70%;
     font-size: 1.5em;
     border-radius: 5px;
@@ -240,24 +241,60 @@ a.download{
     opacity: 1;
 }
 
-a.download:hover{
+div.preview:hover {
     bottom: 9px;
     box-shadow: 0 4px 14px 0 rgba(0,0,0,.4);
 }
 
-a.download.disabled{
+div.preview:active {
+    bottom: 7px;
+    box-shadow: none;
+}
+
+div.preview.disabled {
     bottom: -100px;
     opacity: 0;
     pointer-events: none;
 }
 
-a.download:active{
-    bottom: 7px;
-    box-shadow: none;
+div.preview.expanded {
+    height: 317px;
 }
 
-a.download h2{
-    margin: 0;
+div.json {
+    opacity: 1;
+    transition: all 150ms;
+}
+
+div.json.hidden {
+    opacity: 0;
+}
+
+div.json pre {
+    display: inline-block;
+    text-align: left;
+    white-space: pre-wrap;
+    width: 95%;
+}
+
+a.download {
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    opacity: 1;
+    transition: all 150ms;
+}
+
+a.download:hover {
+    border-color: #ffffff;
+}
+
+a.download.hidden {
+    opacity: 0;
+} 
+
+.hljs {
+    border-radius: 5px;
 }
 
 @media (max-width: 1000px){
@@ -292,7 +329,7 @@ a.download h2{
         overflow-y: visible;
     }
 
-    a.download{
+    div.preview{
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -300,7 +337,7 @@ a.download h2{
         box-shadow: none;
     }
 
-    a.download:hover{
+    div.preview:hover{
         bottom: 0;
         box-shadow: none;
     }
