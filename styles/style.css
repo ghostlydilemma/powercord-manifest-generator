@@ -346,3 +346,7 @@ a.download.hidden {
         bottom: 60px;
     }
 }
+
+input{
+    outline: none;
+}
