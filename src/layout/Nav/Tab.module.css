@@ -1,0 +1,26 @@
+.tab {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 28px;
+    padding: 0 8px;
+    border-bottom: 4px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: var(--font-muted);
+    transition: 200ms all;
+}
+
+.tab:hover, .tab.active {
+    border-bottom-color: var(--font);
+    color: var(--font);
+}
+
+.tab > span {
+    pointer-events: none;
+}
+
+.tabHolder {
+    display: flex;
+    height: 100%;
+}

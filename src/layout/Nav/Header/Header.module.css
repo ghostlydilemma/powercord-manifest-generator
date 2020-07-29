@@ -1,0 +1,19 @@
+.nav {
+    background-color: var(--nav-bar);
+    transition: background-color 200ms;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.logo {
+    position: absolute;
+    left: 10px;
+    pointer-events: none;
+}
+
+.short {
+    width: 570px;
+}
